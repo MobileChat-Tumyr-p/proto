@@ -1,0 +1,20 @@
+{
+  "name": "Mobile Chat gRPC",
+  "version": "1.0.0",
+  "description": "gRPC in MobileChat",
+  "scripts": {
+    "generate":"protoc -I ./proto ./proto/*.proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true"
+  },
+  "files": [
+    "proto",
+    "gen"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/microservices": "^12.1.0",
+    "rxjs": "^7.8.2"
+  }
+}

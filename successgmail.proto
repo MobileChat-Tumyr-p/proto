@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package success.v1;
+
+import "google/protobuf/empty.proto";
+
+service SuccessService {
+  rpc SendSuccess (SendSuccessRequest) returns (google.protobuf.Empty);
+}
+
+message SendSuccessRequest {
+  string email = 1;
+}
+
