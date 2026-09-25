@@ -19,6 +19,8 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org/'
 
+          -name: Install protoc
+          run: sudo apt-get update && sudo apt get install protobuf-compailer
       - name: Install deps
         run: yarn install --frozen-lockfile
 
