@@ -22,7 +22,7 @@ jobs:
           -name: Install protoc
           run: sudo apt-get update && sudo apt get install protobuf-compailer
       - name: Install deps
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Generate TS Protobuf
         run: yarn run generate
