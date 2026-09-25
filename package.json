@@ -1,5 +1,5 @@
 {
-  "name": "mobile-chat-grpc",
+  "name": "tumy/mobile-chat-grpc",
   "version": "1.0.1",
   "description": "gRPC in MobileChat",
   "scripts": {
