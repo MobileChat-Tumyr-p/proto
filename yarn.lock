@@ -5,6 +5,13 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@bufbuild/protobuf@npm:^2.0.0, @bufbuild/protobuf@npm:^2.14.1":
+  version: 2.15.0
+  resolution: "@bufbuild/protobuf@npm:2.15.0"
+  checksum: 38874541154bfe2e32c1edb704420dabec87f0965589928b50a2112f8ce39ca0a50a0159fcaa3562bc1ce0ea6d1018b40e279ec3238844f94f4a7cca1784a840
+  languageName: node
+  linkType: hard
+
 "@nestjs/microservices@npm:^12.1.0":
   version: 12.1.0
   resolution: "@nestjs/microservices@npm:12.1.0"
@@ -48,6 +55,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"case-anything@npm:^2.1.13":
+  version: 2.1.13
+  resolution: "case-anything@npm:2.1.13"
+  checksum: c39c69d7e418337b6006a9692f13c2b257e907e867149a102e9beb7e9d2d52da14e754da1f4e4ce82a866d86d93047e522f64360bda54e7d7c308f4cdd736c3d
+  languageName: node
+  linkType: hard
+
+"detect-libc@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "detect-libc@npm:1.0.3"
+  bin:
+    detect-libc: ./bin/detect-libc.js
+  checksum: daaaed925ffa7889bd91d56e9624e6c8033911bb60f3a50a74a87500680652969dbaab9526d1e200a4c94acf80fc862a22131841145a0a8482d60a99c24f4a3e
+  languageName: node
+  linkType: hard
+
+"dprint-node@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "dprint-node@npm:1.0.8"
+  dependencies:
+    detect-libc: ^1.0.3
+  checksum: ac53b71296d155664319877f0e8c9fe94e084457ce9aae68081b9dd7165916f2829222923c59b1399d95680362f18a8da5994e7f76a8f52035e02bbd14ba76bc
+  languageName: node
+  linkType: hard
+
 "iterare@npm:1.2.1":
   version: 1.2.1
   resolution: "iterare@npm:1.2.1"
@@ -55,12 +87,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"proto@workspace:.":
+"mobile-chat-grpc@workspace:.":
   version: 0.0.0-use.local
-  resolution: "proto@workspace:."
+  resolution: "mobile-chat-grpc@workspace:."
   dependencies:
     "@nestjs/microservices": ^12.1.0
     rxjs: ^7.8.2
+    ts-proto: ^2.12.4
   languageName: unknown
   linkType: soft
 
@@ -70,6 +103,38 @@ __metadata:
   dependencies:
     tslib: ^2.1.0
   checksum: 2f233d7c832a6c255dabe0759014d7d9b1c9f1cb2f2f0d59690fd11c883c9826ea35a51740c06ab45b6ade0d9087bde9192f165cba20b6730d344b831ef80744
+  languageName: node
+  linkType: hard
+
+"ts-poet@npm:^6.12.0":
+  version: 6.12.0
+  resolution: "ts-poet@npm:6.12.0"
+  dependencies:
+    dprint-node: ^1.0.8
+  checksum: 05fec86d188a0727433ae2deea950161c43ee433526702b75cc19858b90a20642b075d99e1029efcafccb59d9e98492c8e41fbbc945615bbff0e58922f820e1c
+  languageName: node
+  linkType: hard
+
+"ts-proto-descriptors@npm:2.1.0":
+  version: 2.1.0
+  resolution: "ts-proto-descriptors@npm:2.1.0"
+  dependencies:
+    "@bufbuild/protobuf": ^2.0.0
+  checksum: 5d2fb092273c5ca5d31294a51714d14d1c4ceeaa8abadf8ec9fb98eeb6a0d11b8ead287f1bb496c5abeef30784319eae7b27a91ba46e5ee9f8c2eb92efe39f12
+  languageName: node
+  linkType: hard
+
+"ts-proto@npm:^2.12.4":
+  version: 2.12.4
+  resolution: "ts-proto@npm:2.12.4"
+  dependencies:
+    "@bufbuild/protobuf": ^2.14.1
+    case-anything: ^2.1.13
+    ts-poet: ^6.12.0
+    ts-proto-descriptors: 2.1.0
+  bin:
+    protoc-gen-ts_proto: protoc-gen-ts_proto
+  checksum: 6e99326e57f5e5ab43ba11788fbba80b43e15fd5a1d4ee6179f90159a056a996dd0bfebc01bef7def04126d1eb82bfa02e86bf2e0b814cd3dacbb4a591e2ff69
   languageName: node
   linkType: hard
 
