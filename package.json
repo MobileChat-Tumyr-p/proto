@@ -2,10 +2,11 @@
   "name": "mobile-chat-grpc",
   "version": "1.0.0",
   "description": "gRPC in MobileChat",
+
   "scripts": {
-    "generate": "mkdir -p ./gen && protoc -I ./proto ./proto/*.proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
-  },
-  "files": [
+  "generate": "mkdir -p ./gen && protoc -I ./proto $(find ./proto -name '*.proto') --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
+},
+"files": [
     "proto",
     "gen"
   ],
