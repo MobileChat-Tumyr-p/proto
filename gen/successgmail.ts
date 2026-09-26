@@ -7,7 +7,6 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { Empty } from "./google/protobuf/empty";
 
 export const protobufPackage = "success.v1";
 
@@ -15,14 +14,18 @@ export interface SendSuccessRequest {
   email: string;
 }
 
+export interface UserSuccessCode {
+  code: number;
+}
+
 export const SUCCESS_V1_PACKAGE_NAME = "success.v1";
 
 export interface SuccessServiceClient {
-  sendSuccess(request: SendSuccessRequest): Observable<Empty>;
+  sendSuccess(request: SendSuccessRequest): Observable<UserSuccessCode>;
 }
 
 export interface SuccessServiceController {
-  sendSuccess(request: SendSuccessRequest): void | Promise<void>;
+  sendSuccess(request: SendSuccessRequest): Promise<UserSuccessCode> | Observable<UserSuccessCode> | UserSuccessCode;
 }
 
 export function SuccessServiceControllerMethods() {

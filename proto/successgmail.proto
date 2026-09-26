@@ -11,5 +11,5 @@ message SendSuccessRequest {
 }
 
 message UserSuccessCode {
-  string code = 2;
+  int32 code = 2;
 }
