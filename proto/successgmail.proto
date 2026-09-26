@@ -2,13 +2,14 @@ syntax = "proto3";
 
 package success.v1;
 
-import "google/protobuf/empty.proto";
-
 service SuccessService {
-  rpc SendSuccess (SendSuccessRequest) returns (google.protobuf.Empty);
+  rpc SendSuccess(SendSuccessRequest) returns (UserSuccessCode);
 }
 
 message SendSuccessRequest {
   string email = 1;
 }
 
+message UserSuccessCode {
+  string code = 2;
+}
