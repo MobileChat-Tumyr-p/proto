@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package chat.v1;
+
+import "google/protobuf/empty.proto";
+
+service getChatList {
+  rpc getChat(google.protobuf.Empty) returns (AllChat);
+}
+service GetConcreteChat {
+  rpc getConcreteChat(ChatId) returns (Chat);
+}
+
+message ChatId {
+  int32 id = 1;
+}
+
+message Chat {
+  int32 id = 1;
+  string name_chat = 2;
+  string description = 3;
+  int32 members = 4;
+}
+message AllChat {
+  repeated Chat List = 1;
+}
