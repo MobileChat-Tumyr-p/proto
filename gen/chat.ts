@@ -10,8 +10,7 @@ import { Observable } from "rxjs";
 
 export const protobufPackage = "chat.v1";
 
-export interface GetChatListRequest {
-  name: string;
+export interface Empty {
 }
 
 export interface ChatId {
@@ -34,11 +33,11 @@ export interface AllChat {
 export const CHAT_V1_PACKAGE_NAME = "chat.v1";
 
 export interface getChatListServiceClient {
-  getChat(request: GetChatListRequest): Observable<AllChat>;
+  getChat(request: Empty): Observable<AllChat>;
 }
 
 export interface getChatListServiceController {
-  getChat(request: GetChatListRequest): Promise<AllChat> | Observable<AllChat> | AllChat;
+  getChat(request: Empty): Promise<AllChat> | Observable<AllChat> | AllChat;
 }
 
 export function getChatListServiceControllerMethods() {

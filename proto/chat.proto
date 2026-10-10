@@ -2,12 +2,10 @@ syntax = "proto3";
 
 package chat.v1;
 
-message GetChatListRequest {
-  string name = 1;
-}
+message Empty {}
 
 service getChatListService {
-  rpc get_chat(GetChatListRequest) returns (AllChat);
+  rpc get_chat(Empty) returns (AllChat);
 }
 service GetConcreteChatService {
   rpc get_concrete_chat(ChatId) returns (Chat);
