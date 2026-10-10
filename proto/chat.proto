@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package chat.v1;
 
-import "google/protobuf/empty.proto";
-
 message GetChatListRequest {
   string name = 1;
 }
