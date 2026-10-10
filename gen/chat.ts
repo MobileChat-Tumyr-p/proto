@@ -7,9 +7,12 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { Empty } from "./google/protobuf/empty";
 
 export const protobufPackage = "chat.v1";
+
+export interface GetChatListRequest {
+  name: string;
+}
 
 export interface ChatId {
   id: number;
@@ -31,11 +34,11 @@ export interface AllChat {
 export const CHAT_V1_PACKAGE_NAME = "chat.v1";
 
 export interface getChatListServiceClient {
-  getChat(request: Empty): Observable<AllChat>;
+  getChat(request: GetChatListRequest): Observable<AllChat>;
 }
 
 export interface getChatListServiceController {
-  getChat(request: Empty): Promise<AllChat> | Observable<AllChat> | AllChat;
+  getChat(request: GetChatListRequest): Promise<AllChat> | Observable<AllChat> | AllChat;
 }
 
 export function getChatListServiceControllerMethods() {

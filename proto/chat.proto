@@ -4,8 +4,12 @@ package chat.v1;
 
 import "google/protobuf/empty.proto";
 
+message GetChatListRequest {
+  string name = 1;
+}
+
 service getChatListService {
-  rpc get_chat(google.protobuf.Empty) returns (AllChat);
+  rpc get_chat(GetChatListRequest) returns (AllChat);
 }
 service GetConcreteChatService {
   rpc get_concrete_chat(ChatId) returns (Chat);
