@@ -23,61 +23,61 @@ export interface Chat {
 }
 
 export interface AllChat {
-  List: Chat[];
+  list: Chat[];
 }
 
 export const CHAT_V1_PACKAGE_NAME = "chat.v1";
 
-export interface getChatListClient {
+export interface getChatListServiceClient {
   getChat(request: Empty): Observable<AllChat>;
 }
 
-export interface getChatListController {
+export interface getChatListServiceController {
   getChat(request: Empty): Promise<AllChat> | Observable<AllChat> | AllChat;
 }
 
-export function getChatListControllerMethods() {
+export function getChatListServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = ["getChat"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcMethod("getChatList", method)(constructor.prototype[method], method, descriptor);
+      GrpcMethod("getChatListService", method)(constructor.prototype[method], method, descriptor);
       Object.defineProperty(constructor.prototype, method, descriptor);
     }
     const grpcStreamMethods: string[] = [];
     for (const method of grpcStreamMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcStreamMethod("getChatList", method)(constructor.prototype[method], method, descriptor);
+      GrpcStreamMethod("getChatListService", method)(constructor.prototype[method], method, descriptor);
       Object.defineProperty(constructor.prototype, method, descriptor);
     }
   };
 }
 
-export const GET_CHAT_LIST_SERVICE_NAME = "getChatList";
+export const GET_CHAT_LIST_SERVICE_NAME = "getChatListService";
 
-export interface GetConcreteChatClient {
+export interface GetConcreteChatServiceClient {
   getConcreteChat(request: ChatId): Observable<Chat>;
 }
 
-export interface GetConcreteChatController {
+export interface GetConcreteChatServiceController {
   getConcreteChat(request: ChatId): Promise<Chat> | Observable<Chat> | Chat;
 }
 
-export function GetConcreteChatControllerMethods() {
+export function GetConcreteChatServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = ["getConcreteChat"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcMethod("GetConcreteChat", method)(constructor.prototype[method], method, descriptor);
+      GrpcMethod("GetConcreteChatService", method)(constructor.prototype[method], method, descriptor);
       Object.defineProperty(constructor.prototype, method, descriptor);
     }
     const grpcStreamMethods: string[] = [];
     for (const method of grpcStreamMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcStreamMethod("GetConcreteChat", method)(constructor.prototype[method], method, descriptor);
+      GrpcStreamMethod("GetConcreteChatService", method)(constructor.prototype[method], method, descriptor);
       Object.defineProperty(constructor.prototype, method, descriptor);
     }
   };
 }
 
-export const GET_CONCRETE_CHAT_SERVICE_NAME = "GetConcreteChat";
+export const GET_CONCRETE_CHAT_SERVICE_NAME = "GetConcreteChatService";
