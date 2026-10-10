@@ -17,8 +17,10 @@ export interface ChatId {
 
 export interface Chat {
   id: number;
-  nameChat: string;
-  description: string;
+  title: string;
+  lastMessage: string;
+  updatedAt: string;
+  unreadCount: number;
   members: number;
 }
 
