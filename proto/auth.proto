@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package auth.v1;
+
+// ─── Messages ───────────────────────────────────────────────────────────────
+
+message Empty {}
+
+message RegisterRequest {
+  string name     = 1;
+  string nick     = 2;
+  string email    = 3;
+  string password = 4;
+}
+
+message LoginRequest {
+  string name     = 1;
+  string password = 2;
+}
+
+message RefreshRequest {
+  string refresh_token = 1;
+}
+
+message LogoutRequest {
+  string refresh_token = 1;
+}
+
+message MeRequest {
+  string access_token = 1;
+}
+
+// ─── Responses ──────────────────────────────────────────────────────────────
+
+message AuthResponse {
+  int32  id            = 1;
+  string name          = 2;
+  string nick          = 3;
+  string email         = 4;
+  bool   confirmed     = 5;
+  string access_token  = 6;
+  string refresh_token = 7;
+  repeated string chat_ids = 8;
+}
+
+message TokensResponse {
+  string access_token  = 1;
+  string refresh_token = 2;
+}
+
+message UserResponse {
+  int32  id        = 1;
+  string name      = 2;
+  string nick      = 3;
+  string email     = 4;
+  bool   confirmed = 5;
+  repeated string chat_ids = 6;
+}
+
+// ─── Service ────────────────────────────────────────────────────────────────
+
+service AuthService {
+  rpc Register (RegisterRequest) returns (AuthResponse);
+  rpc Login    (LoginRequest)    returns (AuthResponse);
+  rpc Refresh  (RefreshRequest)  returns (TokensResponse);
+  rpc Logout   (LogoutRequest)   returns (Empty);
+  rpc Me       (MeRequest)       returns (UserResponse);
+}
