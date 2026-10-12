@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package create.v1;
+
+service createChat {
+  rpc craete(createRequest) returns (createResponse);
+}
+
+message createRequest {
+  string name = 1;
+  string title = 2;
+}
+
+message createResponse {
+  string id = 1;
+}
