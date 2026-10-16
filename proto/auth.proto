@@ -30,6 +30,21 @@ message MeRequest {
   string access_token = 1;
 }
 
+message SaveCodeRequest {
+  string email = 1;
+  int32  code  = 2;
+}
+
+message VerifyCodeRequest {
+  string email = 1;
+  int32  code  = 2;
+}
+
+message UpdateNickRequest {
+  string access_token = 1;
+  string nick         = 2;
+}
+
 // ─── Responses ──────────────────────────────────────────────────────────────
 
 message AuthResponse {
@@ -65,4 +80,8 @@ service AuthService {
   rpc Refresh  (RefreshRequest)  returns (TokensResponse);
   rpc Logout   (LogoutRequest)   returns (Empty);
   rpc Me       (MeRequest)       returns (UserResponse);
+
+  rpc SaveCode   (SaveCodeRequest)   returns (Empty);
+  rpc VerifyCode (VerifyCodeRequest) returns (AuthResponse);
+  rpc UpdateNick (UpdateNickRequest) returns (UserResponse);
 }
