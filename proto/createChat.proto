@@ -3,14 +3,19 @@ syntax = "proto3";
 package create.v1;
 
 service createChat {
-  rpc craete(createRequest) returns (createResponse);
+  rpc create(CreateChatRequest) returns (CreateChatResponse);
 }
 
-message createRequest {
-  string name = 1;
+message CreateChatRequest {
+  int32 ownerId = 1;
   string title = 2;
+  repeated int32 memberIds = 3;
 }
 
-message createResponse {
-  string id = 1;
+message CreateChatResponse {
+  int32 id = 1;
+  string title = 2;
+  int32 ownerId = 3;
+  int32 members = 4;
+  string createdAt = 5;
 }
