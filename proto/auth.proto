@@ -45,6 +45,20 @@ message UpdateNickRequest {
   string nick         = 2;
 }
 
+message SearchPeopleRequest {
+  string nick = 1;
+}
+
+message UserPreviewReply {
+  int32  id   = 1;
+  string name = 2;
+  string nick = 3;
+}
+
+message UserPreviewList {
+  repeated UserPreviewReply users = 1;
+}
+
 // ─── Responses ──────────────────────────────────────────────────────────────
 
 message AuthResponse {
@@ -84,4 +98,5 @@ service AuthService {
   rpc SaveCode   (SaveCodeRequest)   returns (Empty);
   rpc VerifyCode (VerifyCodeRequest) returns (AuthResponse);
   rpc UpdateNick (UpdateNickRequest) returns (UserResponse);
+  rpc SearchPeople (SearchPeopleRequest) returns (UserPreviewList);
 }
