@@ -5,10 +5,14 @@ package chat.v1;
 message Empty {}
 
 service getChatListService {
-  rpc get_chat(Empty) returns (AllChat);
+  rpc get_chat(GetChatListRequest) returns (AllChat);
 }
 service GetConcreteChatService {
   rpc get_concrete_chat(ChatId) returns (Chat);
+}
+
+message GetChatListRequest {
+  int32 userId = 1;
 }
 
 message ChatId {

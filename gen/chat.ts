@@ -13,6 +13,10 @@ export const protobufPackage = "chat.v1";
 export interface Empty {
 }
 
+export interface GetChatListRequest {
+  userId: number;
+}
+
 export interface ChatId {
   id: number;
 }
@@ -33,11 +37,11 @@ export interface AllChat {
 export const CHAT_V1_PACKAGE_NAME = "chat.v1";
 
 export interface getChatListServiceClient {
-  getChat(request: Empty): Observable<AllChat>;
+  getChat(request: GetChatListRequest): Observable<AllChat>;
 }
 
 export interface getChatListServiceController {
-  getChat(request: Empty): Promise<AllChat> | Observable<AllChat> | AllChat;
+  getChat(request: GetChatListRequest): Promise<AllChat> | Observable<AllChat> | AllChat;
 }
 
 export function getChatListServiceControllerMethods() {
