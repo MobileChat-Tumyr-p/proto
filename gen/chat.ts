@@ -17,6 +17,20 @@ export interface GetChatListRequest {
   userId: number;
 }
 
+export interface GetChatMembersRequest {
+  chatId: number;
+  userId: number;
+}
+
+export interface ChatMemberItem {
+  userId: number;
+  role: string;
+}
+
+export interface ChatMembers {
+  members: ChatMemberItem[];
+}
+
 export interface ChatId {
   id: number;
 }
@@ -89,3 +103,30 @@ export function GetConcreteChatServiceControllerMethods() {
 }
 
 export const GET_CONCRETE_CHAT_SERVICE_NAME = "GetConcreteChatService";
+
+export interface getChatMembersServiceClient {
+  getChatMembers(request: GetChatMembersRequest): Observable<ChatMembers>;
+}
+
+export interface getChatMembersServiceController {
+  getChatMembers(request: GetChatMembersRequest): Promise<ChatMembers> | Observable<ChatMembers> | ChatMembers;
+}
+
+export function getChatMembersServiceControllerMethods() {
+  return function (constructor: Function) {
+    const grpcMethods: string[] = ["getChatMembers"];
+    for (const method of grpcMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcMethod("getChatMembersService", method)(constructor.prototype[method], method, descriptor);
+      Object.defineProperty(constructor.prototype, method, descriptor);
+    }
+    const grpcStreamMethods: string[] = [];
+    for (const method of grpcStreamMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcStreamMethod("getChatMembersService", method)(constructor.prototype[method], method, descriptor);
+      Object.defineProperty(constructor.prototype, method, descriptor);
+    }
+  };
+}
+
+export const GET_CHAT_MEMBERS_SERVICE_NAME = "getChatMembersService";

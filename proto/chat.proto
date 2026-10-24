@@ -10,9 +10,23 @@ service getChatListService {
 service GetConcreteChatService {
   rpc get_concrete_chat(ChatId) returns (Chat);
 }
+service getChatMembersService {
+  rpc get_chat_members(GetChatMembersRequest) returns (ChatMembers);
+}
 
 message GetChatListRequest {
   int32 userId = 1;
+}
+message GetChatMembersRequest {
+  int32 chatId = 1;
+  int32 userId = 2;
+}
+message ChatMemberItem {
+  int32 userId = 1;
+  string role = 2;
+}
+message ChatMembers {
+  repeated ChatMemberItem members = 1;
 }
 
 message ChatId {
