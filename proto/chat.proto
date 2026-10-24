@@ -13,6 +13,17 @@ service GetConcreteChatService {
 service getChatMembersService {
   rpc get_chat_members(GetChatMembersRequest) returns (ChatMembers);
 }
+service directChatService {
+  rpc ensure_direct_chat(DirectChatRequest) returns (DirectChatResponse);
+}
+
+message DirectChatRequest {
+  int32 userId = 1;
+  int32 peerId = 2;
+}
+message DirectChatResponse {
+  int32 chatId = 1;
+}
 
 message GetChatListRequest {
   int32 userId = 1;
@@ -40,6 +51,8 @@ message Chat {
   string updatedAt = 4;
   int32 unreadCount = 5;
   int32 members = 6;
+  repeated int32 memberIds = 7;
+  bool isDirect = 8;
 }
 message AllChat {
   repeated Chat list = 1;

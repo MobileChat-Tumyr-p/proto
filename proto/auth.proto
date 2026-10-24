@@ -49,6 +49,10 @@ message SearchPeopleRequest {
   string nick = 1;
 }
 
+message UserIdRequest {
+  int32 userId = 1;
+}
+
 message UserPreviewReply {
   int32  id   = 1;
   string name = 2;
@@ -99,4 +103,8 @@ service AuthService {
   rpc VerifyCode (VerifyCodeRequest) returns (AuthResponse);
   rpc UpdateNick (UpdateNickRequest) returns (UserResponse);
   rpc SearchPeople (SearchPeopleRequest) returns (UserPreviewList);
+}
+
+service getUserInfoService {
+  rpc get_user_by_id (UserIdRequest) returns (UserPreviewReply);
 }

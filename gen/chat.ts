@@ -13,6 +13,15 @@ export const protobufPackage = "chat.v1";
 export interface Empty {
 }
 
+export interface DirectChatRequest {
+  userId: number;
+  peerId: number;
+}
+
+export interface DirectChatResponse {
+  chatId: number;
+}
+
 export interface GetChatListRequest {
   userId: number;
 }
@@ -42,6 +51,8 @@ export interface Chat {
   updatedAt: string;
   unreadCount: number;
   members: number;
+  memberIds: number[];
+  isDirect: boolean;
 }
 
 export interface AllChat {
@@ -130,3 +141,32 @@ export function getChatMembersServiceControllerMethods() {
 }
 
 export const GET_CHAT_MEMBERS_SERVICE_NAME = "getChatMembersService";
+
+export interface directChatServiceClient {
+  ensureDirectChat(request: DirectChatRequest): Observable<DirectChatResponse>;
+}
+
+export interface directChatServiceController {
+  ensureDirectChat(
+    request: DirectChatRequest,
+  ): Promise<DirectChatResponse> | Observable<DirectChatResponse> | DirectChatResponse;
+}
+
+export function directChatServiceControllerMethods() {
+  return function (constructor: Function) {
+    const grpcMethods: string[] = ["ensureDirectChat"];
+    for (const method of grpcMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcMethod("directChatService", method)(constructor.prototype[method], method, descriptor);
+      Object.defineProperty(constructor.prototype, method, descriptor);
+    }
+    const grpcStreamMethods: string[] = [];
+    for (const method of grpcStreamMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcStreamMethod("directChatService", method)(constructor.prototype[method], method, descriptor);
+      Object.defineProperty(constructor.prototype, method, descriptor);
+    }
+  };
+}
+
+export const DIRECT_CHAT_SERVICE_NAME = "directChatService";
